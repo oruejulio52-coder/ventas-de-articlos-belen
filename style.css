@@ -1,129 +1,249 @@
-/* ==========================================
-   Mejora de Estilos CSS Puro - E-commerce / Landing
-   ========================================== */
+/* ==========================================================
+   CATÁLOGO DE HOGAR - ESTILOS NEÓN PREMIUM (MEJORADO)
+   ========================================================== */
 
-/* Variables de Diseño (Colores y Tipografía) */
 :root {
-  --primary: #FF6B35;
-  --primary-dark: #E85522;
-  --accent: #2EC4B6;
-  --dark: #1A1A1A;
-  --light: #F8F9FA;
-  --white: #FFFFFF;
-  --gray: #6C757D;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 15px 35px rgba(255, 107, 53, 0.2);
-  --radius: 16px;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --bg-primary: #07090e;
+    --bg-secondary: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --card-border: rgba(56, 189, 248, 0.4);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    
+    /* Variables de Neón Personalizables */
+    --neon-cyan: #00f0ff;
+    --neon-pink: #ff007f;
+    --neon-glow: rgba(0, 240, 255, 0.5);
+    
+    --accent-btn: #10b981;
+    --accent-btn-hover: #059669;
+    --radius: 18px;
 }
 
-/* Reset y Estilos Globales */
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: var(--light);
-  color: var(--dark);
-  line-height: 1.6;
-  text-align: center;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+    background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg-primary) 70%);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 40px 20px;
+    min-height: 100vh;
 }
 
-/* Contenedor Principal (Tarjeta de Producto / Oferta) */
-body > *:first-child, 
+/* Encabezado con toque futurista */
+header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.15), inset 0 0 15px rgba(0, 240, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 12px;
+    background: linear-gradient(90deg, #fff, var(--neon-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+header p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+/* Contenedor Grid responsivo */
 .container {
-  background: var(--white);
-  max-width: 420px;
-  width: 100%;
-  padding: 30px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
 }
 
-body > *:first-child:hover,
-.container:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-4px);
+/* Tarjetas con Borde Neón Dinámico */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 2px solid var(--neon-cyan);
+    box-shadow: 0 0 12px var(--neon-glow), inset 0 0 8px rgba(0, 240, 255, 0.15);
+    backdrop-filter: blur(8px);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease;
 }
 
-/* Contenedor de Imagen Optimizado */
-img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: var(--transition);
-  display: block;
-  margin-bottom: 20px;
+/* Efecto Neón alternado en tarjetas pares para darle estilo único */
+.card:nth-child(even) {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 12px rgba(255, 0, 127, 0.5), inset 0 0 8px rgba(255, 0, 127, 0.15);
 }
 
-img:hover {
-  transform: scale(1.02);
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 0 25px var(--neon-cyan), 0 0 45px rgba(0, 240, 255, 0.4), inset 0 0 15px rgba(0, 240, 255, 0.3);
 }
 
-/* Tipografía Atractiva para Conversión */
-h1, h2, .title {
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: var(--dark);
-  margin-bottom: 12px;
-  letter-spacing: -0.5px;
+.card:nth-child(even):hover {
+    box-shadow: 0 0 25px var(--neon-pink), 0 0 45px rgba(255, 0, 127, 0.4), inset 0 0 15px rgba(255, 0, 127, 0.3);
 }
 
-p, .description {
-  color: var(--gray);
-  font-size: 0.95rem;
-  margin-bottom: 24px;
+/* Contenedor de la Imagen */
+.card-image {
+    width: 100%;
+    height: 230px;
+    background-color: #090d16;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: zoom-in;
 }
 
-/* Precio Destacado */
-.price, .precio {
-  font-size: 2rem;
-  font-weight: 900;
-  color: var(--primary);
-  margin-bottom: 20px;
-  display: inline-block;
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
-/* Botón de Compra de Alto Impacto (CTA) */
-button, .btn, a.btn {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  color: var(--white);
-  border: none;
-  width: 100%;
-  padding: 16px 24px;
-  font-size: 1.05rem;
-  font-weight: 700;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.35);
-  transition: var(--transition);
-  text-decoration: none;
-  display: inline-block;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.card-image:hover img {
+    transform: scale(1.1);
 }
 
-button:hover, .btn:hover, a.btn:hover {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, #D04412 100%);
-  box-shadow: 0 12px 25px rgba(255, 107, 53, 0.5);
-  transform: translateY(-2px);
+/* Overlay sutil al pasar el mouse por la imagen */
+.card-image::after {
+    content: "🔍 Toca para ampliar";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: #fff;
+    font-size: 0.85rem;
+    padding: 10px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-button:active, .btn:active, a.btn:active {
-  transform: translateY(0);
+.card-image:hover::after {
+    opacity: 1;
+}
+
+/* Cuerpo de la Tarjeta */
+.card-content {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-main);
+    line-height: 1.4;
+}
+
+.card-price {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+.card:nth-child(even) .card-price {
+    color: var(--neon-pink);
+    text-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+}
+
+/* Botón de Acción Estilizado */
+.btn-comprar {
+    display: block;
+    text-align: center;
+    background: linear-gradient(135deg, var(--accent-btn), #047857);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    transition: all 0.25s ease;
+}
+
+.btn-comprar:hover {
+    background: linear-gradient(135deg, var(--accent-btn-hover), #065f46);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Pie de Página */
+footer {
+    text-align: center;
+    margin-top: 70px;
+    padding: 30px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(5px);
+    border-radius: var(--radius);
+}
+
+/* ==========================================================
+   MODAL / PANTALLA COMPLETA PARA LAS IMÁGENES
+   ========================================================== */
+.modal-imagen {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(5, 7, 12, 0.95);
+    backdrop-filter: blur(12px);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-imagen img {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 12px;
+    border: 2px solid var(--neon-cyan);
+    box-shadow: 0 0 40px var(--neon-cyan);
+    object-fit: contain;
+    animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
